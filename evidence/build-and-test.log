@@ -1,0 +1,46 @@
+clang -std=c11 -O1 -g -Wall -Wextra -Werror -Wconversion -Wpedantic -fsanitize=address,undefined -Icore core/protocol.c core/monitor.c tests/test_core.c -o build/test-core
+./build/test-core
+PASS crc_reference
+PASS roundtrip_signed_and_escaping
+PASS insufficient_capacity_is_nonmutating
+PASS crc_corruption_and_resync
+PASS oversize_and_short_frame
+PASS escape_delimiter_and_timeout
+PASS unsupported_version_and_type
+PASS monitor_hysteresis_and_staleness
+PASS sequence_rules_and_wrap
+PASS ranges_and_no_false_refresh
+PASS parser_noise_stress
+11 C test groups passed (including 100,000-byte noise stress).
+python3 -m unittest discover -s tests -p 'test_*.py' -v
+test_corrupt_crc (test_protocol.ProtocolTests.test_corrupt_crc) ... ok
+test_invalid_envelopes (test_protocol.ProtocolTests.test_invalid_envelopes) ... ok
+test_known_crc (test_protocol.ProtocolTests.test_known_crc) ... ok
+test_seeded_roundtrips (test_protocol.ProtocolTests.test_seeded_roundtrips) ... ok
+test_signed_extremes_and_escaping (test_protocol.ProtocolTests.test_signed_extremes_and_escaping) ... ok
+test_version_and_type (test_protocol.ProtocolTests.test_version_and_type) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.028s
+
+OK
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -std=c11 -O2 -g3 -ffreestanding -fno-builtin -ffunction-sections -fdata-sections -Wall -Wextra -Icore -Ifirmware -Ifirmware/freestanding -Ithird_party/FreeRTOS-Kernel/include -Ithird_party/FreeRTOS-Kernel/portable/GCC/ARM_CM3 firmware/main.c firmware/bsp.c firmware/runtime.c firmware/startup.S core/protocol.c core/monitor.c third_party/FreeRTOS-Kernel/tasks.c third_party/FreeRTOS-Kernel/queue.c third_party/FreeRTOS-Kernel/list.c third_party/FreeRTOS-Kernel/portable/GCC/ARM_CM3/port.c third_party/FreeRTOS-Kernel/portable/MemMang/heap_4.c -nostdlib -Wl,--gc-sections,-Map=build/firmware.map -Tfirmware/linker.ld -lgcc -o build/firmware.elf
+arm-none-eabi-size build/firmware.elf
+   text	   data	    bss	    dec	    hex	filename
+  13040	      8	  65968	  79016	  134a8	build/firmware.elf
+python3 tools/integration.py --qemu qemu-system-arm --elf build/firmware.elf --output build/integration-results.json
+PASS boot_and_resources
+PASS two_channels_and_negative_values
+PASS fragmented_and_escaped_frame
+PASS crc_rejection_and_recovery
+PASS truncated_frame_timeout
+PASS oversize_resynchronization
+PASS duplicate_gap_and_order
+PASS sequence_wrap
+PASS stale_detection_and_recovery
+PASS warning_hysteresis
+PASS invalid_commands_and_ranges
+PASS live_configuration
+PASS overload_is_visible_and_recovers
+PASS sustained_nominal_stream
+14/14 QEMU integration scenarios passed

@@ -1,0 +1,750 @@
+{
+  "qemu": "QEMU emulator version 11.1.2",
+  "passed": 14,
+  "total": 14,
+  "results": [
+    {
+      "name": "boot_and_resources",
+      "passed": true,
+      "status": {
+        "event": "status",
+        "token": 2,
+        "tick_ms": 3,
+        "frames": 2,
+        "crc_errors": 0,
+        "malformed": 0,
+        "frame_timeouts": 0,
+        "rx_drops": 0,
+        "sample_drops": 0,
+        "event_drops": 0,
+        "queue_peak": 0,
+        "range_errors": 0,
+        "channel_errors": 0,
+        "process_delay_ms": 0,
+        "report_ms": 200,
+        "stale_ms": 500,
+        "heap_free": 56168,
+        "stack_free_words": [
+          470,
+          342,
+          450
+        ],
+        "sensors": [
+          {
+            "channel": 0,
+            "state": "unavailable",
+            "value": 0,
+            "threshold": 3000,
+            "accepted": 0,
+            "sequence": 0,
+            "duplicates": 0,
+            "out_of_order": 0,
+            "missing": 0
+          },
+          {
+            "channel": 1,
+            "state": "unavailable",
+            "value": 0,
+            "threshold": 12000,
+            "accepted": 0,
+            "sequence": 0,
+            "duplicates": 0,
+            "out_of_order": 0,
+            "missing": 0
+          }
+        ]
+      },
+      "wall_seconds": 0.123
+    },
+    {
+      "name": "two_channels_and_negative_values",
+      "passed": true,
+      "status": {
+        "event": "status",
+        "token": 1,
+        "tick_ms": 212,
+        "frames": 3,
+        "crc_errors": 0,
+        "malformed": 0,
+        "frame_timeouts": 0,
+        "rx_drops": 0,
+        "sample_drops": 0,
+        "event_drops": 0,
+        "queue_peak": 1,
+        "range_errors": 0,
+        "channel_errors": 0,
+        "process_delay_ms": 0,
+        "report_ms": 200,
+        "stale_ms": 500,
+        "heap_free": 56168,
+        "stack_free_words": [
+          464,
+          342,
+          450
+        ],
+        "sensors": [
+          {
+            "channel": 0,
+            "state": "normal",
+            "value": -125,
+            "threshold": 3000,
+            "accepted": 1,
+            "sequence": 1,
+            "duplicates": 0,
+            "out_of_order": 0,
+            "missing": 0
+          },
+          {
+            "channel": 1,
+            "state": "normal",
+            "value": 10125,
+            "threshold": 12000,
+            "accepted": 1,
+            "sequence": 1,
+            "duplicates": 0,
+            "out_of_order": 0,
+            "missing": 0
+          }
+        ]
+      },
+      "wall_seconds": 0.324
+    },
+    {
+      "name": "fragmented_and_escaped_frame",
+      "passed": true,
+      "status": {
+        "event": "status",
+        "token": 1,
+        "tick_ms": 203,
+        "frames": 2,
+        "crc_errors": 0,
+        "malformed": 0,
+        "frame_timeouts": 0,
+        "rx_drops": 0,
+        "sample_drops": 0,
+        "event_drops": 0,
+        "queue_peak": 1,
+        "range_errors": 0,
+        "channel_errors": 0,
+        "process_delay_ms": 0,
+        "report_ms": 200,
+        "stale_ms": 500,
+        "heap_free": 56168,
+        "stack_free_words": [
+          464,
+          342,
+          450
+        ],
+        "sensors": [
+          {
+            "channel": 0,
+            "state": "normal",
+            "value": 125,
+            "threshold": 3000,
+            "accepted": 1,
+            "sequence": 32381,
+            "duplicates": 0,
+            "out_of_order": 0,
+            "missing": 0
+          },
+          {
+            "channel": 1,
+            "state": "unavailable",
+            "value": 0,
+            "threshold": 12000,
+            "accepted": 0,
+            "sequence": 0,
+            "duplicates": 0,
+            "out_of_order": 0,
+            "missing": 0
+          }
+        ]
+      },
+      "wall_seconds": 0.291
+    },
+    {
+      "name": "crc_rejection_and_recovery",
+      "passed": true,
+      "status": {
+        "event": "status",
+        "token": 1,
+        "tick_ms": 204,
+        "frames": 2,
+        "crc_errors": 1,
+        "malformed": 0,
+        "frame_timeouts": 0,
+        "rx_drops": 0,
+        "sample_drops": 0,
+        "event_drops": 0,
+        "queue_peak": 1,
+        "range_errors": 0,
+        "channel_errors": 0,
+        "process_delay_ms": 0,
+        "report_ms": 200,
+        "stale_ms": 500,
+        "heap_free": 56168,
+        "stack_free_words": [
+          464,
+          342,
+          450
+        ],
+        "sensors": [
+          {
+            "channel": 0,
+            "state": "normal",
+            "value": 2500,
+            "threshold": 3000,
+            "accepted": 1,
+            "sequence": 2,
+            "duplicates": 0,
+            "out_of_order": 0,
+            "missing": 0
+          },
+          {
+            "channel": 1,
+            "state": "unavailable",
+            "value": 0,
+            "threshold": 12000,
+            "accepted": 0,
+            "sequence": 0,
+            "duplicates": 0,
+            "out_of_order": 0,
+            "missing": 0
+          }
+        ]
+      },
+      "wall_seconds": 0.314
+    },
+    {
+      "name": "truncated_frame_timeout",
+      "passed": true,
+      "status": {
+        "event": "status",
+        "token": 1,
+        "tick_ms": 404,
+        "frames": 2,
+        "crc_errors": 0,
+        "malformed": 0,
+        "frame_timeouts": 1,
+        "rx_drops": 0,
+        "sample_drops": 0,
+        "event_drops": 0,
+        "queue_peak": 1,
+        "range_errors": 0,
+        "channel_errors": 0,
+        "process_delay_ms": 0,
+        "report_ms": 200,
+        "stale_ms": 500,
+        "heap_free": 56168,
+        "stack_free_words": [
+          464,
+          342,
+          442
+        ],
+        "sensors": [
+          {
+            "channel": 0,
+            "state": "normal",
+            "value": 2500,
+            "threshold": 3000,
+            "accepted": 1,
+            "sequence": 1,
+            "duplicates": 0,
+            "out_of_order": 0,
+            "missing": 0
+          },
+          {
+            "channel": 1,
+            "state": "unavailable",
+            "value": 0,
+            "threshold": 12000,
+            "accepted": 0,
+            "sequence": 0,
+            "duplicates": 0,
+            "out_of_order": 0,
+            "missing": 0
+          }
+        ]
+      },
+      "wall_seconds": 0.544
+    },
+    {
+      "name": "oversize_resynchronization",
+      "passed": true,
+      "status": {
+        "event": "status",
+        "token": 1,
+        "tick_ms": 204,
+        "frames": 2,
+        "crc_errors": 0,
+        "malformed": 1,
+        "frame_timeouts": 0,
+        "rx_drops": 0,
+        "sample_drops": 0,
+        "event_drops": 0,
+        "queue_peak": 1,
+        "range_errors": 0,
+        "channel_errors": 0,
+        "process_delay_ms": 0,
+        "report_ms": 200,
+        "stale_ms": 500,
+        "heap_free": 56168,
+        "stack_free_words": [
+          464,
+          342,
+          450
+        ],
+        "sensors": [
+          {
+            "channel": 0,
+            "state": "normal",
+            "value": 2000,
+            "threshold": 3000,
+            "accepted": 1,
+            "sequence": 1,
+            "duplicates": 0,
+            "out_of_order": 0,
+            "missing": 0
+          },
+          {
+            "channel": 1,
+            "state": "unavailable",
+            "value": 0,
+            "threshold": 12000,
+            "accepted": 0,
+            "sequence": 0,
+            "duplicates": 0,
+            "out_of_order": 0,
+            "missing": 0
+          }
+        ]
+      },
+      "wall_seconds": 0.292
+    },
+    {
+      "name": "duplicate_gap_and_order",
+      "passed": true,
+      "status": {
+        "event": "status",
+        "token": 1,
+        "tick_ms": 202,
+        "frames": 5,
+        "crc_errors": 0,
+        "malformed": 0,
+        "frame_timeouts": 0,
+        "rx_drops": 0,
+        "sample_drops": 0,
+        "event_drops": 0,
+        "queue_peak": 1,
+        "range_errors": 0,
+        "channel_errors": 0,
+        "process_delay_ms": 0,
+        "report_ms": 200,
+        "stale_ms": 500,
+        "heap_free": 56168,
+        "stack_free_words": [
+          463,
+          342,
+          450
+        ],
+        "sensors": [
+          {
+            "channel": 0,
+            "state": "normal",
+            "value": 2000,
+            "threshold": 3000,
+            "accepted": 2,
+            "sequence": 13,
+            "duplicates": 1,
+            "out_of_order": 1,
+            "missing": 2
+          },
+          {
+            "channel": 1,
+            "state": "unavailable",
+            "value": 0,
+            "threshold": 12000,
+            "accepted": 0,
+            "sequence": 0,
+            "duplicates": 0,
+            "out_of_order": 0,
+            "missing": 0
+          }
+        ]
+      },
+      "wall_seconds": 0.291
+    },
+    {
+      "name": "sequence_wrap",
+      "passed": true,
+      "status": {
+        "event": "status",
+        "token": 1,
+        "tick_ms": 203,
+        "frames": 5,
+        "crc_errors": 0,
+        "malformed": 0,
+        "frame_timeouts": 0,
+        "rx_drops": 0,
+        "sample_drops": 0,
+        "event_drops": 0,
+        "queue_peak": 1,
+        "range_errors": 0,
+        "channel_errors": 0,
+        "process_delay_ms": 0,
+        "report_ms": 200,
+        "stale_ms": 500,
+        "heap_free": 56168,
+        "stack_free_words": [
+          464,
+          342,
+          450
+        ],
+        "sensors": [
+          {
+            "channel": 0,
+            "state": "normal",
+            "value": 2000,
+            "threshold": 3000,
+            "accepted": 4,
+            "sequence": 1,
+            "duplicates": 0,
+            "out_of_order": 0,
+            "missing": 0
+          },
+          {
+            "channel": 1,
+            "state": "unavailable",
+            "value": 0,
+            "threshold": 12000,
+            "accepted": 0,
+            "sequence": 0,
+            "duplicates": 0,
+            "out_of_order": 0,
+            "missing": 0
+          }
+        ]
+      },
+      "wall_seconds": 0.29
+    },
+    {
+      "name": "stale_detection_and_recovery",
+      "passed": true,
+      "status": {
+        "event": "status",
+        "token": 2,
+        "tick_ms": 204,
+        "frames": 4,
+        "crc_errors": 0,
+        "malformed": 0,
+        "frame_timeouts": 0,
+        "rx_drops": 0,
+        "sample_drops": 0,
+        "event_drops": 0,
+        "queue_peak": 1,
+        "range_errors": 0,
+        "channel_errors": 0,
+        "process_delay_ms": 0,
+        "report_ms": 200,
+        "stale_ms": 150,
+        "heap_free": 56168,
+        "stack_free_words": [
+          464,
+          342,
+          450
+        ],
+        "sensors": [
+          {
+            "channel": 0,
+            "state": "normal",
+            "value": 2000,
+            "threshold": 3000,
+            "accepted": 2,
+            "sequence": 2,
+            "duplicates": 0,
+            "out_of_order": 0,
+            "missing": 0
+          },
+          {
+            "channel": 1,
+            "state": "unavailable",
+            "value": 0,
+            "threshold": 12000,
+            "accepted": 0,
+            "sequence": 0,
+            "duplicates": 0,
+            "out_of_order": 0,
+            "missing": 0
+          }
+        ]
+      },
+      "wall_seconds": 0.291
+    },
+    {
+      "name": "warning_hysteresis",
+      "passed": true,
+      "status": {
+        "event": "status",
+        "token": 1,
+        "tick_ms": 604,
+        "frames": 4,
+        "crc_errors": 0,
+        "malformed": 0,
+        "frame_timeouts": 0,
+        "rx_drops": 0,
+        "sample_drops": 0,
+        "event_drops": 0,
+        "queue_peak": 1,
+        "range_errors": 0,
+        "channel_errors": 0,
+        "process_delay_ms": 0,
+        "report_ms": 200,
+        "stale_ms": 500,
+        "heap_free": 56168,
+        "stack_free_words": [
+          464,
+          342,
+          450
+        ],
+        "sensors": [
+          {
+            "channel": 0,
+            "state": "normal",
+            "value": 2900,
+            "threshold": 3000,
+            "accepted": 3,
+            "sequence": 3,
+            "duplicates": 0,
+            "out_of_order": 0,
+            "missing": 0
+          },
+          {
+            "channel": 1,
+            "state": "unavailable",
+            "value": 0,
+            "threshold": 12000,
+            "accepted": 0,
+            "sequence": 0,
+            "duplicates": 0,
+            "out_of_order": 0,
+            "missing": 0
+          }
+        ]
+      },
+      "wall_seconds": 0.796
+    },
+    {
+      "name": "invalid_commands_and_ranges",
+      "passed": true,
+      "status": {
+        "event": "status",
+        "token": 9,
+        "tick_ms": 208,
+        "frames": 11,
+        "crc_errors": 0,
+        "malformed": 0,
+        "frame_timeouts": 0,
+        "rx_drops": 0,
+        "sample_drops": 0,
+        "event_drops": 0,
+        "queue_peak": 1,
+        "range_errors": 1,
+        "channel_errors": 1,
+        "process_delay_ms": 0,
+        "report_ms": 200,
+        "stale_ms": 500,
+        "heap_free": 56168,
+        "stack_free_words": [
+          464,
+          342,
+          450
+        ],
+        "sensors": [
+          {
+            "channel": 0,
+            "state": "unavailable",
+            "value": 0,
+            "threshold": 3000,
+            "accepted": 0,
+            "sequence": 0,
+            "duplicates": 0,
+            "out_of_order": 0,
+            "missing": 0
+          },
+          {
+            "channel": 1,
+            "state": "unavailable",
+            "value": 0,
+            "threshold": 12000,
+            "accepted": 0,
+            "sequence": 0,
+            "duplicates": 0,
+            "out_of_order": 0,
+            "missing": 0
+          }
+        ]
+      },
+      "wall_seconds": 0.304
+    },
+    {
+      "name": "live_configuration",
+      "passed": true,
+      "status": {
+        "event": "status",
+        "token": 4,
+        "tick_ms": 116,
+        "frames": 6,
+        "crc_errors": 0,
+        "malformed": 0,
+        "frame_timeouts": 0,
+        "rx_drops": 0,
+        "sample_drops": 0,
+        "event_drops": 0,
+        "queue_peak": 1,
+        "range_errors": 0,
+        "channel_errors": 0,
+        "process_delay_ms": 0,
+        "report_ms": 100,
+        "stale_ms": 500,
+        "heap_free": 56168,
+        "stack_free_words": [
+          464,
+          342,
+          450
+        ],
+        "sensors": [
+          {
+            "channel": 0,
+            "state": "warning",
+            "value": 2700,
+            "threshold": 2600,
+            "accepted": 1,
+            "sequence": 1,
+            "duplicates": 0,
+            "out_of_order": 0,
+            "missing": 0
+          },
+          {
+            "channel": 1,
+            "state": "warning",
+            "value": 11500,
+            "threshold": 11000,
+            "accepted": 1,
+            "sequence": 1,
+            "duplicates": 0,
+            "out_of_order": 0,
+            "missing": 0
+          }
+        ]
+      },
+      "wall_seconds": 0.18
+    },
+    {
+      "name": "overload_is_visible_and_recovers",
+      "passed": true,
+      "status": {
+        "event": "status",
+        "token": 3,
+        "tick_ms": 621,
+        "frames": 64,
+        "crc_errors": 0,
+        "malformed": 0,
+        "frame_timeouts": 0,
+        "rx_drops": 0,
+        "sample_drops": 49,
+        "event_drops": 0,
+        "queue_peak": 8,
+        "range_errors": 0,
+        "channel_errors": 0,
+        "process_delay_ms": 0,
+        "report_ms": 200,
+        "stale_ms": 500,
+        "heap_free": 56168,
+        "stack_free_words": [
+          464,
+          342,
+          450
+        ],
+        "sensors": [
+          {
+            "channel": 0,
+            "state": "normal",
+            "value": 2300,
+            "threshold": 3000,
+            "accepted": 12,
+            "sequence": 100,
+            "duplicates": 0,
+            "out_of_order": 0,
+            "missing": 88
+          },
+          {
+            "channel": 1,
+            "state": "unavailable",
+            "value": 0,
+            "threshold": 12000,
+            "accepted": 0,
+            "sequence": 0,
+            "duplicates": 0,
+            "out_of_order": 0,
+            "missing": 0
+          }
+        ]
+      },
+      "wall_seconds": 0.823
+    },
+    {
+      "name": "sustained_nominal_stream",
+      "passed": true,
+      "status": {
+        "event": "status",
+        "token": 1,
+        "tick_ms": 1003,
+        "frames": 201,
+        "crc_errors": 0,
+        "malformed": 0,
+        "frame_timeouts": 0,
+        "rx_drops": 0,
+        "sample_drops": 0,
+        "event_drops": 0,
+        "queue_peak": 2,
+        "range_errors": 0,
+        "channel_errors": 0,
+        "process_delay_ms": 0,
+        "report_ms": 200,
+        "stale_ms": 500,
+        "heap_free": 56168,
+        "stack_free_words": [
+          463,
+          328,
+          450
+        ],
+        "sensors": [
+          {
+            "channel": 0,
+            "state": "normal",
+            "value": 2400,
+            "threshold": 3000,
+            "accepted": 100,
+            "sequence": 100,
+            "duplicates": 0,
+            "out_of_order": 0,
+            "missing": 0
+          },
+          {
+            "channel": 1,
+            "state": "normal",
+            "value": 10010,
+            "threshold": 12000,
+            "accepted": 100,
+            "sequence": 100,
+            "duplicates": 0,
+            "out_of_order": 0,
+            "missing": 0
+          }
+        ]
+      },
+      "wall_seconds": 1.297
+    }
+  ],
+  "scope": "Emulated functional behavior, not physical/clinical or worst-case timing validation"
+}
