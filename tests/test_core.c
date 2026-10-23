@@ -118,8 +118,24 @@ static void parser_noise_stress(void) {
     parser_expire(&p,100100);
     assert(deliver(&p,wire,n,100101,&f) && f.value==2500 && f.sequence==17);
 }
+static void explicit_resync_preserves_diagnostics(void) {
+    monitor_t m; monitor_init(&m);
+    frame_t f={TYPE_SAMPLE,0,30000,3500};
+    assert(monitor_sample(&m,&f,10));
+    assert(!monitor_sample(&m,&f,11));
+    assert(!monitor_resync(&m,2) && m.sensor[0].seen);
+    assert(monitor_resync(&m,0));
+    assert(monitor_state(&m,0,12)==SENSOR_UNAVAILABLE);
+    assert(m.sensor[0].accepted==1 && m.sensor[0].duplicates==1);
+    assert(m.sensor[0].resyncs==1 && !m.sensor[0].warning);
+    f.sequence=0; f.value=2950;
+    assert(monitor_sample(&m,&f,13));
+    assert(m.sensor[0].accepted==2 && m.sensor[0].missing==0);
+    assert(monitor_state(&m,0,13)==SENSOR_NORMAL);
+    assert(!m.sensor[1].seen && m.sensor[1].resyncs==0);
+}
 int main(void) {
-    RUN(crc_reference);RUN(roundtrip_signed_and_escaping);
+    RUN(explicit_resync_preserves_diagnostics);RUN(crc_reference);RUN(roundtrip_signed_and_escaping);
     RUN(insufficient_capacity_is_nonmutating);RUN(crc_corruption_and_resync);
     RUN(oversize_and_short_frame);RUN(escape_delimiter_and_timeout);
     RUN(unsupported_version_and_type);RUN(monitor_hysteresis_and_staleness);

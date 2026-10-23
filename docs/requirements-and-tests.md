@@ -16,6 +16,7 @@
 | R12 | Apply accepted runtime configuration | `live_configuration` |
 | R13 | Count bounded-queue overload and recover | `overload_is_visible_and_recovers` |
 | R14 | Process a bounded nominal run without observed drops | `sustained_nominal_stream` (100 samples/channel) |
+| R16 | Reset a restarted source in FIFO order without clearing lifetime diagnostics | `source_restart_and_ordered_resync`; C explicit-resync test |
 | R15 | Keep protocol/model memory access within bounds on exercised host paths | ASan/UBSan C tests; 100,000-byte deterministic noise run |
 
 These requirements cover the emulated acquisition and diagnostic system. They
@@ -31,7 +32,7 @@ or worst-case response-time certification.
 - The overload scenario forces sample-queue saturation through a slow-consumer
   hook; it does not establish a maximum supported input rate.
 - UART TX backpressure/error injection is not covered. Host waits are bounded.
-- Sequence restart/session negotiation and randomized scheduling are future work.
+- Epoch-bearing samples and randomized scheduling are future work. Explicit ordered sequence resynchronization is tested.
 - Sensor inputs arrive as frames; no analog or I2C/SPI behavior is emulated.
 - Heap/stack telemetry is observed headroom during scenarios, not exhaustive proof.
 

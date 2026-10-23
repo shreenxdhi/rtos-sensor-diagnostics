@@ -1,8 +1,63 @@
 {
   "qemu": "QEMU emulator version 11.1.2",
-  "passed": 14,
-  "total": 14,
+  "passed": 15,
+  "total": 15,
   "results": [
+    {
+      "name": "source_restart_and_ordered_resync",
+      "passed": true,
+      "status": {
+        "event": "status",
+        "token": 10,
+        "tick_ms": 613,
+        "frames": 16,
+        "crc_errors": 0,
+        "malformed": 0,
+        "frame_timeouts": 0,
+        "rx_drops": 0,
+        "sample_drops": 0,
+        "event_drops": 0,
+        "queue_peak": 2,
+        "range_errors": 0,
+        "channel_errors": 0,
+        "process_delay_ms": 100,
+        "report_ms": 100,
+        "stale_ms": 5000,
+        "heap_free": 56168,
+        "stack_free_words": [
+          460,
+          340,
+          440
+        ],
+        "sensors": [
+          {
+            "channel": 0,
+            "state": "normal",
+            "value": 2000,
+            "threshold": 3000,
+            "accepted": 5,
+            "sequence": 0,
+            "duplicates": 0,
+            "out_of_order": 1,
+            "missing": 0,
+            "resyncs": 2
+          },
+          {
+            "channel": 1,
+            "state": "unavailable",
+            "value": 0,
+            "threshold": 12000,
+            "accepted": 0,
+            "sequence": 0,
+            "duplicates": 0,
+            "out_of_order": 0,
+            "missing": 0,
+            "resyncs": 0
+          }
+        ]
+      },
+      "wall_seconds": 0.928
+    },
     {
       "name": "boot_and_resources",
       "passed": true,
@@ -25,9 +80,9 @@
         "stale_ms": 500,
         "heap_free": 56168,
         "stack_free_words": [
-          470,
-          342,
-          450
+          466,
+          340,
+          448
         ],
         "sensors": [
           {
@@ -39,7 +94,8 @@
             "sequence": 0,
             "duplicates": 0,
             "out_of_order": 0,
-            "missing": 0
+            "missing": 0,
+            "resyncs": 0
           },
           {
             "channel": 1,
@@ -50,11 +106,12 @@
             "sequence": 0,
             "duplicates": 0,
             "out_of_order": 0,
-            "missing": 0
+            "missing": 0,
+            "resyncs": 0
           }
         ]
       },
-      "wall_seconds": 0.123
+      "wall_seconds": 0.043
     },
     {
       "name": "two_channels_and_negative_values",
@@ -62,7 +119,7 @@
       "status": {
         "event": "status",
         "token": 1,
-        "tick_ms": 212,
+        "tick_ms": 213,
         "frames": 3,
         "crc_errors": 0,
         "malformed": 0,
@@ -78,9 +135,9 @@
         "stale_ms": 500,
         "heap_free": 56168,
         "stack_free_words": [
-          464,
-          342,
-          450
+          460,
+          340,
+          448
         ],
         "sensors": [
           {
@@ -92,7 +149,8 @@
             "sequence": 1,
             "duplicates": 0,
             "out_of_order": 0,
-            "missing": 0
+            "missing": 0,
+            "resyncs": 0
           },
           {
             "channel": 1,
@@ -103,11 +161,12 @@
             "sequence": 1,
             "duplicates": 0,
             "out_of_order": 0,
-            "missing": 0
+            "missing": 0,
+            "resyncs": 0
           }
         ]
       },
-      "wall_seconds": 0.324
+      "wall_seconds": 0.332
     },
     {
       "name": "fragmented_and_escaped_frame",
@@ -115,7 +174,7 @@
       "status": {
         "event": "status",
         "token": 1,
-        "tick_ms": 203,
+        "tick_ms": 222,
         "frames": 2,
         "crc_errors": 0,
         "malformed": 0,
@@ -131,9 +190,9 @@
         "stale_ms": 500,
         "heap_free": 56168,
         "stack_free_words": [
-          464,
-          342,
-          450
+          466,
+          340,
+          448
         ],
         "sensors": [
           {
@@ -145,7 +204,8 @@
             "sequence": 32381,
             "duplicates": 0,
             "out_of_order": 0,
-            "missing": 0
+            "missing": 0,
+            "resyncs": 0
           },
           {
             "channel": 1,
@@ -156,11 +216,12 @@
             "sequence": 0,
             "duplicates": 0,
             "out_of_order": 0,
-            "missing": 0
+            "missing": 0,
+            "resyncs": 0
           }
         ]
       },
-      "wall_seconds": 0.291
+      "wall_seconds": 0.336
     },
     {
       "name": "crc_rejection_and_recovery",
@@ -168,7 +229,7 @@
       "status": {
         "event": "status",
         "token": 1,
-        "tick_ms": 204,
+        "tick_ms": 203,
         "frames": 2,
         "crc_errors": 1,
         "malformed": 0,
@@ -184,9 +245,9 @@
         "stale_ms": 500,
         "heap_free": 56168,
         "stack_free_words": [
-          464,
-          342,
-          450
+          460,
+          340,
+          448
         ],
         "sensors": [
           {
@@ -198,7 +259,8 @@
             "sequence": 2,
             "duplicates": 0,
             "out_of_order": 0,
-            "missing": 0
+            "missing": 0,
+            "resyncs": 0
           },
           {
             "channel": 1,
@@ -209,11 +271,12 @@
             "sequence": 0,
             "duplicates": 0,
             "out_of_order": 0,
-            "missing": 0
+            "missing": 0,
+            "resyncs": 0
           }
         ]
       },
-      "wall_seconds": 0.314
+      "wall_seconds": 0.319
     },
     {
       "name": "truncated_frame_timeout",
@@ -237,9 +300,9 @@
         "stale_ms": 500,
         "heap_free": 56168,
         "stack_free_words": [
-          464,
-          342,
-          442
+          460,
+          340,
+          440
         ],
         "sensors": [
           {
@@ -251,7 +314,8 @@
             "sequence": 1,
             "duplicates": 0,
             "out_of_order": 0,
-            "missing": 0
+            "missing": 0,
+            "resyncs": 0
           },
           {
             "channel": 1,
@@ -262,11 +326,12 @@
             "sequence": 0,
             "duplicates": 0,
             "out_of_order": 0,
-            "missing": 0
+            "missing": 0,
+            "resyncs": 0
           }
         ]
       },
-      "wall_seconds": 0.544
+      "wall_seconds": 0.579
     },
     {
       "name": "oversize_resynchronization",
@@ -274,7 +339,7 @@
       "status": {
         "event": "status",
         "token": 1,
-        "tick_ms": 204,
+        "tick_ms": 207,
         "frames": 2,
         "crc_errors": 0,
         "malformed": 1,
@@ -290,9 +355,9 @@
         "stale_ms": 500,
         "heap_free": 56168,
         "stack_free_words": [
-          464,
-          342,
-          450
+          460,
+          340,
+          448
         ],
         "sensors": [
           {
@@ -304,7 +369,8 @@
             "sequence": 1,
             "duplicates": 0,
             "out_of_order": 0,
-            "missing": 0
+            "missing": 0,
+            "resyncs": 0
           },
           {
             "channel": 1,
@@ -315,11 +381,12 @@
             "sequence": 0,
             "duplicates": 0,
             "out_of_order": 0,
-            "missing": 0
+            "missing": 0,
+            "resyncs": 0
           }
         ]
       },
-      "wall_seconds": 0.292
+      "wall_seconds": 0.338
     },
     {
       "name": "duplicate_gap_and_order",
@@ -327,7 +394,7 @@
       "status": {
         "event": "status",
         "token": 1,
-        "tick_ms": 202,
+        "tick_ms": 205,
         "frames": 5,
         "crc_errors": 0,
         "malformed": 0,
@@ -343,9 +410,9 @@
         "stale_ms": 500,
         "heap_free": 56168,
         "stack_free_words": [
-          463,
-          342,
-          450
+          460,
+          340,
+          448
         ],
         "sensors": [
           {
@@ -357,7 +424,8 @@
             "sequence": 13,
             "duplicates": 1,
             "out_of_order": 1,
-            "missing": 2
+            "missing": 2,
+            "resyncs": 0
           },
           {
             "channel": 1,
@@ -368,11 +436,12 @@
             "sequence": 0,
             "duplicates": 0,
             "out_of_order": 0,
-            "missing": 0
+            "missing": 0,
+            "resyncs": 0
           }
         ]
       },
-      "wall_seconds": 0.291
+      "wall_seconds": 0.403
     },
     {
       "name": "sequence_wrap",
@@ -380,7 +449,7 @@
       "status": {
         "event": "status",
         "token": 1,
-        "tick_ms": 203,
+        "tick_ms": 204,
         "frames": 5,
         "crc_errors": 0,
         "malformed": 0,
@@ -396,9 +465,9 @@
         "stale_ms": 500,
         "heap_free": 56168,
         "stack_free_words": [
-          464,
-          342,
-          450
+          460,
+          340,
+          448
         ],
         "sensors": [
           {
@@ -410,7 +479,8 @@
             "sequence": 1,
             "duplicates": 0,
             "out_of_order": 0,
-            "missing": 0
+            "missing": 0,
+            "resyncs": 0
           },
           {
             "channel": 1,
@@ -421,11 +491,12 @@
             "sequence": 0,
             "duplicates": 0,
             "out_of_order": 0,
-            "missing": 0
+            "missing": 0,
+            "resyncs": 0
           }
         ]
       },
-      "wall_seconds": 0.29
+      "wall_seconds": 0.316
     },
     {
       "name": "stale_detection_and_recovery",
@@ -433,7 +504,7 @@
       "status": {
         "event": "status",
         "token": 2,
-        "tick_ms": 204,
+        "tick_ms": 205,
         "frames": 4,
         "crc_errors": 0,
         "malformed": 0,
@@ -449,9 +520,9 @@
         "stale_ms": 150,
         "heap_free": 56168,
         "stack_free_words": [
-          464,
-          342,
-          450
+          466,
+          340,
+          448
         ],
         "sensors": [
           {
@@ -463,7 +534,8 @@
             "sequence": 2,
             "duplicates": 0,
             "out_of_order": 0,
-            "missing": 0
+            "missing": 0,
+            "resyncs": 0
           },
           {
             "channel": 1,
@@ -474,11 +546,12 @@
             "sequence": 0,
             "duplicates": 0,
             "out_of_order": 0,
-            "missing": 0
+            "missing": 0,
+            "resyncs": 0
           }
         ]
       },
-      "wall_seconds": 0.291
+      "wall_seconds": 0.332
     },
     {
       "name": "warning_hysteresis",
@@ -486,7 +559,7 @@
       "status": {
         "event": "status",
         "token": 1,
-        "tick_ms": 604,
+        "tick_ms": 605,
         "frames": 4,
         "crc_errors": 0,
         "malformed": 0,
@@ -502,9 +575,9 @@
         "stale_ms": 500,
         "heap_free": 56168,
         "stack_free_words": [
-          464,
-          342,
-          450
+          460,
+          340,
+          448
         ],
         "sensors": [
           {
@@ -516,7 +589,8 @@
             "sequence": 3,
             "duplicates": 0,
             "out_of_order": 0,
-            "missing": 0
+            "missing": 0,
+            "resyncs": 0
           },
           {
             "channel": 1,
@@ -527,11 +601,12 @@
             "sequence": 0,
             "duplicates": 0,
             "out_of_order": 0,
-            "missing": 0
+            "missing": 0,
+            "resyncs": 0
           }
         ]
       },
-      "wall_seconds": 0.796
+      "wall_seconds": 0.795
     },
     {
       "name": "invalid_commands_and_ranges",
@@ -555,9 +630,9 @@
         "stale_ms": 500,
         "heap_free": 56168,
         "stack_free_words": [
-          464,
-          342,
-          450
+          460,
+          340,
+          448
         ],
         "sensors": [
           {
@@ -569,7 +644,8 @@
             "sequence": 0,
             "duplicates": 0,
             "out_of_order": 0,
-            "missing": 0
+            "missing": 0,
+            "resyncs": 0
           },
           {
             "channel": 1,
@@ -580,11 +656,12 @@
             "sequence": 0,
             "duplicates": 0,
             "out_of_order": 0,
-            "missing": 0
+            "missing": 0,
+            "resyncs": 0
           }
         ]
       },
-      "wall_seconds": 0.304
+      "wall_seconds": 0.293
     },
     {
       "name": "live_configuration",
@@ -592,7 +669,7 @@
       "status": {
         "event": "status",
         "token": 4,
-        "tick_ms": 116,
+        "tick_ms": 113,
         "frames": 6,
         "crc_errors": 0,
         "malformed": 0,
@@ -608,9 +685,9 @@
         "stale_ms": 500,
         "heap_free": 56168,
         "stack_free_words": [
-          464,
-          342,
-          450
+          460,
+          340,
+          448
         ],
         "sensors": [
           {
@@ -622,7 +699,8 @@
             "sequence": 1,
             "duplicates": 0,
             "out_of_order": 0,
-            "missing": 0
+            "missing": 0,
+            "resyncs": 0
           },
           {
             "channel": 1,
@@ -633,11 +711,12 @@
             "sequence": 1,
             "duplicates": 0,
             "out_of_order": 0,
-            "missing": 0
+            "missing": 0,
+            "resyncs": 0
           }
         ]
       },
-      "wall_seconds": 0.18
+      "wall_seconds": 0.178
     },
     {
       "name": "overload_is_visible_and_recovers",
@@ -645,7 +724,7 @@
       "status": {
         "event": "status",
         "token": 3,
-        "tick_ms": 621,
+        "tick_ms": 609,
         "frames": 64,
         "crc_errors": 0,
         "malformed": 0,
@@ -661,9 +740,9 @@
         "stale_ms": 500,
         "heap_free": 56168,
         "stack_free_words": [
-          464,
-          342,
-          450
+          459,
+          340,
+          448
         ],
         "sensors": [
           {
@@ -675,7 +754,8 @@
             "sequence": 100,
             "duplicates": 0,
             "out_of_order": 0,
-            "missing": 88
+            "missing": 88,
+            "resyncs": 0
           },
           {
             "channel": 1,
@@ -686,11 +766,12 @@
             "sequence": 0,
             "duplicates": 0,
             "out_of_order": 0,
-            "missing": 0
+            "missing": 0,
+            "resyncs": 0
           }
         ]
       },
-      "wall_seconds": 0.823
+      "wall_seconds": 0.808
     },
     {
       "name": "sustained_nominal_stream",
@@ -698,7 +779,7 @@
       "status": {
         "event": "status",
         "token": 1,
-        "tick_ms": 1003,
+        "tick_ms": 1006,
         "frames": 201,
         "crc_errors": 0,
         "malformed": 0,
@@ -714,9 +795,9 @@
         "stale_ms": 500,
         "heap_free": 56168,
         "stack_free_words": [
-          463,
-          328,
-          450
+          459,
+          326,
+          448
         ],
         "sensors": [
           {
@@ -728,7 +809,8 @@
             "sequence": 100,
             "duplicates": 0,
             "out_of_order": 0,
-            "missing": 0
+            "missing": 0,
+            "resyncs": 0
           },
           {
             "channel": 1,
@@ -739,11 +821,12 @@
             "sequence": 100,
             "duplicates": 0,
             "out_of_order": 0,
-            "missing": 0
+            "missing": 0,
+            "resyncs": 0
           }
         ]
       },
-      "wall_seconds": 1.297
+      "wall_seconds": 1.286
     }
   ],
   "scope": "Emulated functional behavior, not physical/clinical or worst-case timing validation"

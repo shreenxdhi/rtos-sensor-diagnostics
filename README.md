@@ -84,6 +84,8 @@ by both host tests and the ARM image.
   `unavailable` and fresh accepted readings restore availability.
 - Bounded queues with reject-newest policy and explicit drop/high-water counters.
 - Commands with request tokens and ACKs; validation before configuration changes.
+- Ordered source resynchronization after a sender restart, retaining lifetime counters.
+  See [RESYNC](docs/protocol.md#ordered-source-resynchronization) for the handshake.
 - Periodic consistent status snapshots, heap availability, and task-stack high-water
   marks. UART output is owned by one task during normal operation.
 - Configurable slow-consumer test hook to reproduce overload and recovery.
@@ -134,7 +136,7 @@ minimal freestanding memory runtime and integer-only formatter are included.
 
 ## Validation and limits
 
-The captured run passed **11 C test groups**, **6 Python tests**, and **14 QEMU
+The captured run passed **12 C test groups**, **6 Python tests**, and **15 QEMU
 integration scenarios**. See `evidence/validation.md` and the machine-readable
 results. C host tests use AddressSanitizer and UndefinedBehaviorSanitizer.
 
@@ -151,4 +153,3 @@ Technical details: [architecture](docs/architecture.md),
 
 Original application code: MIT. FreeRTOS-Kernel retains its upstream MIT license.
 See `third_party/README.md` for the exact revision and retained source subset.
-

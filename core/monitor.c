@@ -4,6 +4,13 @@ void monitor_init(monitor_t *m) {
     memset(m, 0, sizeof *m);
     m->threshold[0] = 3000; m->threshold[1] = 12000; m->stale_ms = 500;
 }
+bool monitor_resync(monitor_t *m, unsigned channel) {
+    if (channel >= CHANNELS) return false;
+    sensor_t *s = &m->sensor[channel];
+    s->seen = s->warning = false;
+    s->sequence = 0; s->value = 0; s->last_ms = 0; s->resyncs++;
+    return true;
+}
 bool monitor_sample(monitor_t *m, const frame_t *f, uint32_t now) {
     if (f->channel >= CHANNELS) { m->channel_errors++; return false; }
     unsigned ch = f->channel;

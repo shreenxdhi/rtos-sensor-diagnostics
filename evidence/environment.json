@@ -1,8 +1,16 @@
 {
+  "host": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "python": "3.14.8",
+  "compiler": "Apple clang version 21.0.0 (clang-2100.3.34.2)",
+  "binary_sha256": "b8547c7c7c3f8ecaec4519b2f27fad33bb610ddd8b3ebd4e9d7492400639855f",
+  "validated_locally": true,
+  "hosted_ci_executed": false,
   "arm_gcc": "arm-none-eabi-gcc (GCC) 16.2.0",
   "qemu": "QEMU emulator version 11.1.2",
-  "clang": "Apple clang version 21.0.0 (clang-2100.3.34.2)",
-  "python": "Python 3.14.8",
-  "host": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
-  "firmware_sha256": "984363282c19670fc37df93da417866b687588927b9b98ff6fe78a8a004cb3ab"
+  "size": [
+    "13116",
+    "8",
+    "65976",
+    "79100"
+  ]
 }

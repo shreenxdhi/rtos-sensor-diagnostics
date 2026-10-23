@@ -65,8 +65,9 @@ Sequence numbers are per channel. Delta modulo 65536: zero is duplicate;
 1..32767 is forward; 32768..65535 is old/ambiguous. Forward gaps count missing
 sequence positions. This is not a transport-loss root-cause estimator: missing
 positions may reflect source drops, corruption, or the sample queue's own drops.
-A source reboot/reset requires an explicit session/reset design in a future
-version; merely restarting at sequence zero is not universally accepted.
+A source restarting its sequence counter must use the ordered RESYNC command
+documented in protocol.md. Merely restarting at zero is not universally accepted.
+Samples still lack an epoch; transport flushing is required across resynchronization.
 
 ## Failure visibility
 
@@ -80,13 +81,6 @@ time out. A future physical target should expose TX-error counters and/or a
 nonblocking transmit queue/interrupt driver. Allocation failure, stack-overflow
 hook, asserts and unexpected exceptions enter a terminal fatal handler. This is
 a development failure response, not a certified safety mechanism.
-
-## Why not more features?
-
-No cloud, UI, custom QEMU device, real ADC, or fictional I2C peripheral is needed
-to exercise the core contracts. Possible
-extensions: source-session negotiation, scheduled periodic acquisition, UART TX
-interrupts, richer retained diagnostics, and a physical board port.
 
 ## Primary references
 

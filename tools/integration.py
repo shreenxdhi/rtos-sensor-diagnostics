@@ -7,7 +7,7 @@ import traceback
 
 from device import Device
 from protocol import (Frame, SAMPLE, STATUS, TEMP_LIMIT, PRESSURE_LIMIT, STALE_MS,
-                      PROCESS_DELAY, REPORT_MS, envelope)
+                      PROCESS_DELAY, REPORT_MS, RESYNC, envelope)
 
 SCENARIOS = []
 
@@ -19,6 +19,33 @@ def send_samples(d, frames, pace=0.01):
     for frame in frames:
         d.send(frame)
         time.sleep(pace)
+
+@scenario
+def source_restart_and_ordered_resync(d):
+    d.command(REPORT_MS, 100)
+    d.command(STALE_MS, 5000)
+    d.send(Frame(SAMPLE, 0, 30000, 3500))
+    d.until_status(lambda s: s["sensors"][0]["accepted"] == 1)
+    d.send(Frame(SAMPLE, 0, 0, 2000))
+    d.until_status(lambda s: s["sensors"][0]["out_of_order"] == 1)
+    d.command(RESYNC, -1, ok=False)
+    d.command(RESYNC, 2, ok=False)
+    d.command(RESYNC, 0)
+    s = d.status()["sensors"][0]
+    assert s["state"] == "unavailable" and s["resyncs"] == 1 and s["accepted"] == 1
+    d.send(Frame(SAMPLE, 0, 0, 2950))
+    s = d.until_status(lambda s: s["sensors"][0]["accepted"] == 2)["sensors"][0]
+    assert s["state"] == "normal" and s["missing"] == 0
+    assert s["out_of_order"] == 1
+    d.command(PROCESS_DELAY, 100)
+    d.send(Frame(SAMPLE, 0, 1, 3500))
+    d.send(Frame(SAMPLE, 0, 2, 3600))
+    d.command(RESYNC, 0)
+    d.send(Frame(SAMPLE, 0, 0, 2000))
+    s = d.until_status(lambda s: s["sensors"][0]["resyncs"] == 2 and
+                       s["sensors"][0]["accepted"] == 5)["sensors"][0]
+    assert s["sequence"] == 0 and s["value"] == 2000 and s["state"] == "normal"
+    assert d.status()["sensors"][1]["resyncs"] == 0
 
 @scenario
 def boot_and_resources(d):

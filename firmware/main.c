@@ -86,11 +86,13 @@ static void parser_task(void *arg) {
             bool complete = parser_feed(&parser, b, now, &f);
             taskEXIT_CRITICAL();
             if (complete) {
-                if (f.type == TYPE_COMMAND) command(&f);
+                if (f.type == TYPE_COMMAND && f.channel != CMD_RESYNC) command(&f);
                 else {
                     sample_t item = {f, now};
                     if (xQueueSend(sample_queue, &item, 0) != pdPASS) {
                         taskENTER_CRITICAL(); sample_drops++; taskEXIT_CRITICAL();
+                        if (f.type == TYPE_COMMAND)
+                            send_event((event_t){EVENT_ACK, f.sequence, f.channel, 0, 0});
                     } else {
                         uint32_t depth = (uint32_t)uxQueueMessagesWaiting(sample_queue);
                         taskENTER_CRITICAL();
@@ -112,10 +114,15 @@ static void monitor_task(void *arg) {
         sample_t item;
         if (xQueueReceive(sample_queue, &item, pdMS_TO_TICKS(20)) == pdPASS) {
             taskENTER_CRITICAL();
-            (void)monitor_sample(&monitor, &item.frame, item.arrival_ms);
+            bool resync = item.frame.type == TYPE_COMMAND;
+            bool ok;
+            if (resync) ok = item.frame.value >= 0 &&
+                monitor_resync(&monitor, (unsigned)item.frame.value);
+            else ok = monitor_sample(&monitor, &item.frame, item.arrival_ms);
             uint32_t delay = process_delay_ms;
             taskEXIT_CRITICAL();
 
+            if (resync) send_event((event_t){EVENT_ACK, item.frame.sequence, CMD_RESYNC, 0, ok ? 1 : 0});
             if (delay) vTaskDelay(pdMS_TO_TICKS(delay));
         }
         for (unsigned ch = 0; ch < CHANNELS; ++ch) {
@@ -162,7 +169,7 @@ static void status(uint16_t token) {
         text(&w, ",\"threshold\":"); signed_number(&w, m.threshold[ch]);
         field(&w, "accepted", s->accepted); field(&w,"sequence",s->sequence);
         field(&w, "duplicates", s->duplicates); field(&w,"out_of_order",s->out_of_order);
-        field(&w, "missing", s->missing); text(&w, "}");
+        field(&w, "missing", s->missing); field(&w, "resyncs", s->resyncs); text(&w, "}");
     }
     text(&w, "]}\n"); uart_write(w.data);
 }

@@ -35,13 +35,15 @@ Receiving a valid packet does not guarantee its sample was queued or accepted.
 | 4 | STALE_MS | 100..5000 | ACK |
 | 5 | PROCESS_DELAY | 0..200 ms | ACK; test hook |
 | 6 | REPORT_MS | 100..5000 ms | ACK |
+| 7 | RESYNC | Channel 0 or 1 | ACK after ordered channel reset |
 
 Invalid opcode/argument -> `ok:0`, no configuration change. Invalid version,
 type, size, or CRC produces no ACK because the command cannot be trusted.
 ACK `ok:1` means configuration accepted, not physical action confirmed. Command
 tokens are host correlation identifiers; duplicate-command suppression is not
-implemented. Current commands set values or query state, rather than incrementing
-or performing non-idempotent actuator operations.
+implemented. RESYNC clears the channel state and increments its lifetime reset
+counter each time it is consumed. Retrying requires the sender to remain paused
+until a successful acknowledgement.
 
 ## JSON events
 
@@ -61,3 +63,11 @@ per-channel monitor acceptance. `missing` is sequence-gap accounting, while
 `sample_drops` is directly observed downstream queue rejection. These counters
 answer different questions and should not be added as independent loss causes.
 
+
+## Ordered source resynchronization
+
+Command 7 (`RESYNC`) takes the channel number (0 or 1) as its signed value. It enters the same bounded FIFO as samples. The monitor acknowledges it only after earlier queued samples have been processed and the channel is reset to unavailable. The next valid sample establishes a new sequence baseline. Lifetime accepted, duplicate, missing and out-of-order counters remain; `resyncs` records successful resets. Other channels and configured limits are preserved. Invalid channels receive a negative acknowledgement; a full sample queue rejects the request with a negative acknowledgement and increments `sample_drops`.
+
+A sender restarting its sequence counter must pause transmission, request resynchronization, wait for the matching successful acknowledgement, and then resume. A timeout is not an acknowledgement; inspect status and retry before sending new samples. This is an explicit control operation, not automatic reboot detection or authentication. Version 1 samples do not carry an epoch: delayed frames from a previous source session cannot be distinguished after reset. Flush the sender/transport before resuming; an untrusted or reordering transport requires a versioned epoch-bearing protocol.
+
+The sanitized core test verifies counter retention, invalid-channel rejection, warning reset and channel isolation. The QEMU scenario `source_restart_and_ordered_resync` verifies low-sequence rejection before resync, negative acknowledgements, restart recovery and ordering behind queued samples.

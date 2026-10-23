@@ -1,4 +1,3 @@
-python3 tools/demo.py --qemu qemu-system-arm --elf build/firmware.elf
 
 Normal: synthetic temperature 25.00
 {
@@ -20,9 +19,9 @@ Normal: synthetic temperature 25.00
   "stale_ms": 500,
   "heap_free": 56168,
   "stack_free_words": [
-    470,
-    342,
-    451
+    460,
+    340,
+    449
   ],
   "sensors": [
     {
@@ -34,7 +33,8 @@ Normal: synthetic temperature 25.00
       "sequence": 1,
       "duplicates": 0,
       "out_of_order": 0,
-      "missing": 0
+      "missing": 0,
+      "resyncs": 0
     },
     {
       "channel": 1,
@@ -45,7 +45,8 @@ Normal: synthetic temperature 25.00
       "sequence": 0,
       "duplicates": 0,
       "out_of_order": 0,
-      "missing": 0
+      "missing": 0,
+      "resyncs": 0
     }
   ]
 }
@@ -54,7 +55,7 @@ Warning: threshold crossed
 {
   "event": "status",
   "token": 0,
-  "tick_ms": 204,
+  "tick_ms": 203,
   "frames": 3,
   "crc_errors": 0,
   "malformed": 0,
@@ -70,9 +71,9 @@ Warning: threshold crossed
   "stale_ms": 500,
   "heap_free": 56168,
   "stack_free_words": [
-    464,
-    342,
-    450
+    460,
+    340,
+    448
   ],
   "sensors": [
     {
@@ -84,7 +85,8 @@ Warning: threshold crossed
       "sequence": 2,
       "duplicates": 0,
       "out_of_order": 0,
-      "missing": 0
+      "missing": 0,
+      "resyncs": 0
     },
     {
       "channel": 1,
@@ -95,7 +97,8 @@ Warning: threshold crossed
       "sequence": 0,
       "duplicates": 0,
       "out_of_order": 0,
-      "missing": 0
+      "missing": 0,
+      "resyncs": 0
     }
   ]
 }
@@ -104,7 +107,7 @@ Unavailable: source stopped sending
 {
   "event": "status",
   "token": 0,
-  "tick_ms": 604,
+  "tick_ms": 603,
   "frames": 3,
   "crc_errors": 0,
   "malformed": 0,
@@ -120,9 +123,9 @@ Unavailable: source stopped sending
   "stale_ms": 500,
   "heap_free": 56168,
   "stack_free_words": [
-    464,
-    342,
-    450
+    460,
+    340,
+    448
   ],
   "sensors": [
     {
@@ -134,7 +137,8 @@ Unavailable: source stopped sending
       "sequence": 2,
       "duplicates": 0,
       "out_of_order": 0,
-      "missing": 0
+      "missing": 0,
+      "resyncs": 0
     },
     {
       "channel": 1,
@@ -145,7 +149,8 @@ Unavailable: source stopped sending
       "sequence": 0,
       "duplicates": 0,
       "out_of_order": 0,
-      "missing": 0
+      "missing": 0,
+      "resyncs": 0
     }
   ]
 }
@@ -154,7 +159,7 @@ Recovered: fresh data restored
 {
   "event": "status",
   "token": 0,
-  "tick_ms": 706,
+  "tick_ms": 704,
   "frames": 4,
   "crc_errors": 0,
   "malformed": 0,
@@ -170,9 +175,9 @@ Recovered: fresh data restored
   "stale_ms": 500,
   "heap_free": 56168,
   "stack_free_words": [
-    464,
-    342,
-    450
+    460,
+    340,
+    448
   ],
   "sensors": [
     {
@@ -184,7 +189,8 @@ Recovered: fresh data restored
       "sequence": 3,
       "duplicates": 0,
       "out_of_order": 0,
-      "missing": 0
+      "missing": 0,
+      "resyncs": 0
     },
     {
       "channel": 1,
@@ -195,7 +201,8 @@ Recovered: fresh data restored
       "sequence": 0,
       "duplicates": 0,
       "out_of_order": 0,
-      "missing": 0
+      "missing": 0,
+      "resyncs": 0
     }
   ]
 }

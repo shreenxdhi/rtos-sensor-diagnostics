@@ -7,7 +7,7 @@
 enum { FRAME_BYTES = 11, FRAME_TIMEOUT_MS = 100 };
 enum { TYPE_SAMPLE = 1, TYPE_COMMAND = 2 };
 enum { CMD_STATUS = 1, CMD_TEMP_LIMIT, CMD_PRESSURE_LIMIT,
-       CMD_STALE_MS, CMD_PROCESS_DELAY, CMD_REPORT_MS };
+       CMD_STALE_MS, CMD_PROCESS_DELAY, CMD_REPORT_MS, CMD_RESYNC };
 typedef struct {
     uint8_t type, channel;
     uint16_t sequence;
